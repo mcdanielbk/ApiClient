@@ -24,11 +24,19 @@ namespace ApiClient
         {
             var client = new HttpClient();
 
-            var responseAsStream = await client.GetStreamAsync("https://official-joke-api.appspot.com/random_joke");
+            var responseAsStream = await client.GetStreamAsync("https://official-joke-api.appspot.com/random_ten");
 
-            var joke = await JsonSerializer.DeserializeAsync<joke>(responseAsStream);
+            List<joke>jokes = await JsonSerializer.DeserializeAsync<List<joke>>(responseAsStream);
 
-            Console.WriteLine($"Setup;: {joke.setup} -  Punchine: {joke.punchline}");
+            foreach (var joke in jokes)
+            {
+              Console.WriteLine($"Setup: {joke.setup} Punchline: {joke.punchline}....waka waka waka ");
+            }
+
+
+
+            
+
 
 
 
